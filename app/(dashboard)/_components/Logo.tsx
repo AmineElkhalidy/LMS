@@ -3,9 +3,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <Image height={130} width={130} alt="Logo" src="">
-      Logo
-    </Image>
+    <Image height={80} width={80} alt="Logo" src="/assets/images/logo.svg" />
   );
 };
 
