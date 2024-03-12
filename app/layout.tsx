@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "LMS - Learning management system",
+  title: "CourseHUB - Learning management system",
   description: "LMS - Learning management system",
 };
 

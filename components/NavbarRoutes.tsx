@@ -26,8 +26,7 @@ const NavbarRoutes = () => {
         <Link href="/teacher/courses">
           <Button
             size="sm"
-            variant="ghost"
-            // className="bg-sky-700 duration-300 hover:bg-sky-900"
+            className="bg-sky-700 duration-300 hover:bg-sky-900"
           >
             Teacher mode
           </Button>
