@@ -37,7 +37,7 @@ const SidebarRoutes = () => {
   const routes = isTeacherPage ? teacherRoutes : guestRoutes;
 
   return (
-    <div className="flex flex-col w-full gap-y-1">
+    <div className="flex flex-col w-full">
       {routes.map((route, index) => (
         <SidebarItem
           key={index}

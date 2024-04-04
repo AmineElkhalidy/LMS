@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "CourseHUB - Learning management system",
-  description: "LMS - Learning management system",
+  description: "CourseHUB - Learning management system",
 };
 
 export default function RootLayout({
