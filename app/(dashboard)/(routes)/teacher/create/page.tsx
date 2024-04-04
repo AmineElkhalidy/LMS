@@ -40,8 +40,9 @@ const CreatePage = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const response = await axios.post("/api/courses", values);
-      router.push(`/teacher/courses/${response?.data?.id}`);
-      toast.success("Course created!");
+      // router.push(`/teacher/courses/${response?.data?.id}`);
+      console.log(response);
+      toast.success("Course created Successfully!");
     } catch {
       toast.error("Something went wrong!");
     }
@@ -68,7 +69,11 @@ const CreatePage = () => {
                 <FormItem>
                   <FormLabel>Course Title</FormLabel>
                   <FormControl>
-                    <Input {...field} disabled={isSubmitting} />
+                    <Input
+                      {...field}
+                      disabled={isSubmitting}
+                      placeholder="e.g 'Advanced React concepts'"
+                    />
                   </FormControl>
                   <FormDescription>
                     What you will teach in this course?
