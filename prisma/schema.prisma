@@ -35,13 +35,13 @@ model Course {
 }
 
 model Category {
-  id      String   @id @default(uuid()) @map("_id") @db.ObjectId
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
   name    String   @unique
   courses Course[]
 }
 
 model Attachment {
-  id   String @id @default(uuid()) @map("_id") @db.ObjectId
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   url  String
 
