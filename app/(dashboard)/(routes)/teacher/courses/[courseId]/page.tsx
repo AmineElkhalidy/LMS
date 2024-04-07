@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React from "react";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
@@ -7,6 +6,7 @@ import { IconBadge } from "@/components/IconBadge";
 import { LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/TitleForm";
 import DescriptionForm from "./_components/DescriptionForm";
+import ImageForm from "./_components/ImageForm";
 
 const CourseDetailsPage = async ({
   params,
@@ -58,6 +58,7 @@ const CourseDetailsPage = async ({
 
           <TitleForm initialData={course} courseId={course?.id} />
           <DescriptionForm initialData={course} courseId={course?.id} />
+          <ImageForm initialData={course} courseId={course?.id} />
         </div>
       </div>
     </div>
