@@ -42,20 +42,16 @@ const ImageForm = ({ initialData, courseId }: Props) => {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        <span>Course image</span>
-        <Button variant="ghost" onClick={toggleEdit}>
-          {isEditting && (
+        Course image
+        <Button onClick={toggleEdit} variant="ghost">
+          {isEditting && <>Cancel</>}
+          {!isEditting && !initialData.imageUrl && (
             <>
-              <span>Cancel</span>
+              <PlusCircle className="h-4 w-4 mr-2" />
+              Add an image
             </>
           )}
-          {!isEditting && !initialData?.imageUrl && (
-            <>
-              <PlusCircle className="w-4 h-4 mr-2" />
-              Add image
-            </>
-          )}
-          {!isEditting && initialData?.imageUrl && (
+          {!isEditting && initialData.imageUrl && (
             <>
               <Pencil className="h-4 w-4 mr-2" />
               Edit image
@@ -63,24 +59,23 @@ const ImageForm = ({ initialData, courseId }: Props) => {
           )}
         </Button>
       </div>
-
       {!isEditting &&
-        (!initialData?.imageUrl ? (
+        (!initialData.imageUrl ? (
           <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
             <ImageIcon className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
             <Image
-              alt="upload"
+              alt="Upload"
               fill
               className="object-cover rounded-md"
-              src={initialData?.imageUrl}
+              src={initialData.imageUrl}
             />
           </div>
         ))}
       {isEditting && (
-        <div className="">
+        <div>
           <FileUpload
             endpoint="courseImage"
             onChange={(url) => {
@@ -89,7 +84,6 @@ const ImageForm = ({ initialData, courseId }: Props) => {
               }
             }}
           />
-
           <div className="text-xs text-muted-foreground mt-4">
             16:9 aspect ratio recommended
           </div>
