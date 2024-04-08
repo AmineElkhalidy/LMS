@@ -87,7 +87,7 @@ const AttachmentsForm = ({ initialData, courseId }: Props) => {
 
                   {deletingId === attachment.id && (
                     <div>
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin ml-auto" />
                     </div>
                   )}
 
