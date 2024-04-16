@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
@@ -15,6 +16,7 @@ import ImageForm from "./_components/ImageForm";
 import CategoryForm from "./_components/CategoryForm";
 import PriceForm from "./_components/PriceForm";
 import AttachmentsForm from "./_components/AttachmentsForm";
+import ChaptersForm from "./_components/ChaptersForm";
 
 const CourseDetailsPage = async ({
   params,
@@ -28,8 +30,13 @@ const CourseDetailsPage = async ({
 
   // Get the course from db
   const course = await db.course.findFirst({
-    where: { id: params.courseId },
+    where: { id: params.courseId, userId },
     include: {
+      chapters: {
+        orderBy: {
+          position: "asc",
+        },
+      },
       attachments: {
         orderBy: {
           createdAt: "desc",
@@ -58,6 +65,7 @@ const CourseDetailsPage = async ({
     course.imageUrl,
     course.price,
     course.categoryId,
+    course.chapters.some((chapter) => chapter?.isPublished),
   ];
 
   const totalFields = requiredFields.length;
@@ -102,7 +110,7 @@ const CourseDetailsPage = async ({
               <h2 className="text-lg font-medium">Course chapters</h2>
             </div>
 
-            <div>TODO: Chapters</div>
+            <ChaptersForm initialData={course} courseId={course?.id} />
           </div>
 
           <div>
