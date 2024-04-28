@@ -90,7 +90,7 @@ const CourseDetailsPage = async ({
         <div>
           <div className="flex items-center gap-x-2 font-medium">
             <IconBadge icon={LayoutDashboard} />
-            <h2 className="text-lg">Customize your course</h2>
+            <h2 className="text-lg font-medium">Customize your course</h2>
           </div>
 
           <TitleForm initialData={course} courseId={course?.id} />
