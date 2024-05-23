@@ -33,6 +33,7 @@
     "mongodb": "^6.4.0",
     "next": "14.1.4",
     "react": "^18",
+    "react-confetti": "^6.1.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
@@ -41,7 +42,8 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.7.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20",
