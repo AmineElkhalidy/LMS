@@ -33,48 +33,48 @@ export async function DELETE(
 
     if (!chapter) return new NextResponse("Not Found", { status: 404 });
 
-    if (chapter.videoUrl) {
-      try {
-        const existingMuxData = await db.muxData.findFirst({
-          where: {
-            chapterId: params.chapterId,
-          },
-        });
+    // if (chapter.videoUrl) {
+    //   try {
+    //     const existingMuxData = await db.muxData.findFirst({
+    //       where: {
+    //         chapterId: params.chapterId,
+    //       },
+    //     });
 
-        // Log the existingMuxData to verify its content
-        console.log("[Existing Mux Data]:", existingMuxData);
+    //     // Log the existingMuxData to verify its content
+    //     console.log("[Existing Mux Data]:", existingMuxData);
 
-        //TODO: Some attention here
-        if (existingMuxData) {
-          try {
-            await mux.video.assets.delete(existingMuxData.assetId);
-            console.log(
-              `[Mux Asset Deleted]: Asset ID - ${existingMuxData.assetId}`
-            );
-          } catch (muxError) {
-            console.error("[Mux Asset Deletion Error]:", muxError);
-            throw new Error("Failed to delete Mux asset");
-          }
+    //     //TODO: Some attention here
+    //     if (existingMuxData) {
+    //       try {
+    //         await mux.video.assets.delete(existingMuxData.assetId);
+    //         console.log(
+    //           `[Mux Asset Deleted]: Asset ID - ${existingMuxData.assetId}`
+    //         );
+    //       } catch (muxError) {
+    //         console.error("[Mux Asset Deletion Error]:", muxError);
+    //         throw new Error("Failed to delete Mux asset");
+    //       }
 
-          try {
-            await db.muxData.delete({
-              where: {
-                id: existingMuxData.id,
-              },
-            });
-            console.log(
-              `[Database Record Deleted]: Mux Data ID - ${existingMuxData.id}`
-            );
-          } catch (dbError) {
-            console.error("[Database Deletion Error]:", dbError);
-            throw new Error("Failed to delete muxData record from database");
-          }
-        }
-      } catch (fetchError) {
-        console.error("[Mux Data Fetch Error]:", fetchError);
-        throw new Error("Failed to fetch Mux data for the chapter");
-      }
-    }
+    //       try {
+    //         await db.muxData.delete({
+    //           where: {
+    //             id: existingMuxData.id,
+    //           },
+    //         });
+    //         console.log(
+    //           `[Database Record Deleted]: Mux Data ID - ${existingMuxData.id}`
+    //         );
+    //       } catch (dbError) {
+    //         console.error("[Database Deletion Error]:", dbError);
+    //         throw new Error("Failed to delete muxData record from database");
+    //       }
+    //     }
+    //   } catch (fetchError) {
+    //     console.error("[Mux Data Fetch Error]:", fetchError);
+    //     throw new Error("Failed to fetch Mux data for the chapter");
+    //   }
+    // }
 
     const deletedChapter = await db.chapter.delete({
       where: {
