@@ -19,7 +19,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Chapter } from "@prisma/client";
-import { Editor } from "@/components/editor";
+import { Editor } from "@/components/Editor";
 import { Preview } from "@/components/Preview";
 import { Checkbox } from "@/components/ui/checkbox";
 
