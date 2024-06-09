@@ -44,7 +44,7 @@ export async function DELETE(
         // Log the existingMuxData to verify its content
         console.log("[Existing Mux Data]:", existingMuxData);
 
-        // ! Attention here
+        //TODO: Some attention here
         if (existingMuxData) {
           try {
             await mux.video.assets.delete(existingMuxData.assetId);
