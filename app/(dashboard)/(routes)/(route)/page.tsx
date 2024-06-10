@@ -8,7 +8,7 @@ import InfoCard from "./_components/InfoCard";
 export default async function Dashboard() {
   const { userId } = auth();
   if (!userId) {
-    return redirect("/");
+    return redirect("/sign-in");
   }
 
   const { completedCourses, coursesInProgress } = await getDashboardCourses(
